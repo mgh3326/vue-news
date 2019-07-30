@@ -11,16 +11,6 @@
 
     created() {
       this.$store.dispatch('FETCH_NEWS')
-      // fetchNewsList()
-      //   .then((response) => {
-      //       this.users = response.data;
-      //     }
-      //   )
-      //   .catch((err) => {
-      //       // eslint-disable-next-line no-console
-      //       console.log(err)
-      //     }
-      //   )
     },
   }
 </script>
