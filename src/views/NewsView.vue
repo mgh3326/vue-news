@@ -7,12 +7,26 @@
 <script>
 
   import ListItem from "@/components/ListItem";
+  import bus from "../utils/bus"
 
   export default {
     name: "NewsView",
+    created() {
+      bus.$emit('start:spinner');
+      setTimeout(() => {
+        this.$store.dispatch('FETCH_NEWS')
+          .then(() => {
+            bus.$emit('end:spinner');
+          })
+          .catch((err) => {
+            // eslint-disable-next-line no-console
+            console.log(err);
+          })
+      }, 3000)
+    },
     components: {
       ListItem,
-  }
+    },
   }
 </script>
 
