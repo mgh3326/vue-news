@@ -1,4 +1,4 @@
-import {fetchAskList, fetchJobsList, fetchNewsList, fetchUserInfo, fetchCommentItem} from "@/api";
+import {fetchAskList, fetchJobsList, fetchNewsList, fetchUserInfo, fetchCommentItem, fetchList} from "@/api";
 
 export default {
   FETCH_NEWS(context) {
@@ -58,6 +58,18 @@ export default {
       )
       .catch(err => {
           // eslint-disable-next-line no-console
+          console.log(err)
+        }
+      )
+  },
+  FETCH_LIST({commit}, pageName) {
+    fetchList(pageName)
+      .then(({data}) => {
+          commit('SET_LIST', data)
+        }
+      )
+      .catch(err => {
+        // eslint-disable-next-line no-console
           console.log(err)
         }
       )
